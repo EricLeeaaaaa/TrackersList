@@ -30,9 +30,6 @@ Tracker 融合，适用于 Bittorrent 下载方式，qBittorrent 和 Bitcomet �
 
 个人用户构建的 Tracker 列表。
 
-# Star History
+[@Azathothas/Trackers](https://github.com/Azathothas/Trackers)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Tunglies/TrackersList&type=Date)](https://star-history.com/#Tunglies/TrackersList&Date)
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FTunglies%2FTrackersList.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FTunglies%2FTrackersList?ref=badge_large)
+动漫，书籍和电影 Tracker 列表
