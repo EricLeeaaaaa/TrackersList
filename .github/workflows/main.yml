@@ -12,7 +12,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
+      - name: Clean working directory
+        run: |
+          git clean -fd
+          git reset --hard
+
+      # 其他 checkout 操作
       - uses: actions/checkout@v4
         with:
           repository: 'DeSireFire/animeTrackerList'
@@ -32,26 +40,36 @@ jobs:
         with:
           repository: 'hezhijie0327/Trackerslist'
           path: .cache/Trackerslist
-      
+
       - uses: actions/checkout@v4
         with:
           repository: 'Azathothas/Trackers'
           path: .cache/Trackers
-      
+
+      - name: Update .gitignore
+        run: |
+          echo ".cache/" >> .gitignore
+          git add .gitignore
+          git commit -m "Update .gitignore to exclude .cache directory" || echo "No changes to .gitignore"
+
       - name: build
         run: |
           bash script.sh
 
-      - name: config
+      - name: Config Git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add all.txt
-          git commit -a -m "update: $(date) total: $(awk NF all.txt | wc -l)"
-          
-      - name: update
-        uses: ad-m/github-push-action@master
 
+      - name: Commit changes
+        run: |
+          git add all.txt
+          git commit -m "update: $(date) total: $(awk NF all.txt | wc -l)" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        if: success() && !contains(github.event.head_commit.message, 'update:')
+      
       - name: Check deduplication
         run: |
           echo "Total lines before deduplication: $(wc -l < .cache/cache.txt)"
