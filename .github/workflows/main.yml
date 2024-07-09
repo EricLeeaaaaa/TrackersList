@@ -63,11 +63,14 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add all.txt
+          git add all.txt https.txt
           git commit -m "update: $(date) total: $(wc -l < all.txt), https: $(wc -l < https.txt)" || echo "No changes to commit"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
         if: success() && !contains(github.event.head_commit.message, 'update:')
       
       - name: Check deduplication
