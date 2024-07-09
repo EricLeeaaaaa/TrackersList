@@ -51,3 +51,8 @@ jobs:
           
       - name: update
         uses: ad-m/github-push-action@master
+
+      - name: Check deduplication
+        run: |
+          echo "Total lines before deduplication: $(wc -l < .cache/cache.txt)"
+          echo "Total lines after deduplication: $(wc -l < all.txt)"
