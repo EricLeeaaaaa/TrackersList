@@ -64,7 +64,7 @@ jobs:
       - name: Commit changes
         run: |
           git add all.txt
-          git commit -m "update: $(date) total: $(awk NF all.txt | wc -l)" || echo "No changes to commit"
+          git commit -m "update: $(date) total: $(wc -l < all.txt), https: $(wc -l < https.txt)" || echo "No changes to commit"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
