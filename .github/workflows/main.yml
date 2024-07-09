@@ -1,15 +1,19 @@
 name: CI
 
-on: 
-  push:
+on:
   schedule:
     - cron: '0 16 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'script.sh'
+      - '.github/workflows/main.yml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,31 +24,13 @@ jobs:
           git clean -fd
           git reset --hard
 
-      # 其他 checkout 操作
-      - uses: actions/checkout@v4
-        with:
-          repository: 'DeSireFire/animeTrackerList'
-          path: .cache/animeTrackerList
-        
-      - uses: actions/checkout@v4
-        with:
-          repository: 'XIU2/TrackersListCollection'
-          path: .cache/TrackersListCollection
-
-      - uses: actions/checkout@v4
-        with:
-          repository: 'ngosang/trackerslist'
-          path: .cache/trackerslist
-          
-      - uses: actions/checkout@v4
-        with:
-          repository: 'hezhijie0327/Trackerslist'
-          path: .cache/Trackerslist
-
-      - uses: actions/checkout@v4
-        with:
-          repository: 'Azathothas/Trackers'
-          path: .cache/Trackers
+      - name: Checkout additional repositories
+        run: |
+          git clone https://github.com/DeSireFire/animeTrackerList.git .cache/animeTrackerList
+          git clone https://github.com/XIU2/TrackersListCollection.git .cache/TrackersListCollection
+          git clone https://github.com/ngosang/trackerslist.git .cache/trackerslist
+          git clone https://github.com/hezhijie0327/Trackerslist.git .cache/Trackerslist
+          git clone https://github.com/Azathothas/Trackers.git .cache/Trackers
 
       - name: Update .gitignore
         run: |
@@ -52,9 +38,8 @@ jobs:
           git add .gitignore
           git commit -m "Update .gitignore to exclude .cache directory" || echo "No changes to .gitignore"
 
-      - name: build
-        run: |
-          bash script.sh
+      - name: Build
+        run: bash script.sh
 
       - name: Config Git
         run: |
@@ -66,14 +51,13 @@ jobs:
           git add all.txt https.txt
           git commit -m "update: $(date) total: $(wc -l < all.txt), https: $(wc -l < https.txt)" || echo "No changes to commit"
 
+      - name: Display file contents
+        run: |
+          echo "Total trackers in all.txt: $(wc -l < all.txt)"
+          echo "Total trackers in https.txt: $(wc -l < https.txt)"
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-        if: success() && !contains(github.event.head_commit.message, 'update:')
-      
-      - name: Check deduplication
-        run: |
-          echo "Total lines before deduplication: $(wc -l < .cache/cache.txt)"
-          echo "Total lines after deduplication: $(wc -l < all.txt)"
