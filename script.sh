@@ -33,3 +33,6 @@ fi
 
 # 最终处理
 awk NF $cache_file | sort | uniq > all.txt
+
+# 创建仅包含 HTTPS 链接的文件
+grep -i ^"https" all.txt | sort | uniq > https.txt
