@@ -26,7 +26,7 @@ verify_tracker() {
 
     case $protocol in
         http|https)
-            if curl -sS --connect-timeout 3 --max-time 5 -o /dev/null "$tracker"; then
+            if curl -sS --connect-timeout 2 --max-time 3 -o /dev/null "$tracker"; then
                 echo "$tracker"
                 [[ $tracker == https://* ]] && echo "$tracker" >> https.txt
             fi
@@ -45,8 +45,8 @@ verify_tracker() {
 
 export -f verify_tracker
 
-# 并行验证 trackers，设置总超时为 5 分钟，每个作业最多运行 10 秒
-cat combined.txt | parallel --timeout 300 --joblog parallel.log --jobs 50 --max-time 10 verify_tracker > all.txt
+# 并行验证 trackers，设置总超时为 5 分钟，使用 timeout 命令限制每个作业的运行时间
+cat combined.txt | parallel --timeout 300 --joblog parallel.log --jobs 50 'timeout 5s bash -c "verify_tracker {}"' > all.txt
 
 # 清理并排序结果
 sort -u all.txt -o all.txt
