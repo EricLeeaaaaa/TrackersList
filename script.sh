@@ -2,13 +2,15 @@
 
 cache_dir=".cache"
 cache_file="$cache_dir/cache.txt"
+temp_dir="$cache_dir/temp"
+mkdir -p "$temp_dir"
 
 # 函数：验证 tracker
 verify_tracker() {
     local tracker=$1
     local protocol=$(echo $tracker | cut -d: -f1)
     local domain=$(echo $tracker | cut -d/ -f3 | cut -d: -f1)
-    local timeout=5
+    local timeout=2
 
     case $protocol in
         http|https)
@@ -29,8 +31,10 @@ verify_tracker() {
     esac
 }
 
+export -f verify_tracker
+
 # 处理其他仓库
-for folder in $(find $cache_dir -type d -maxdepth 1 ! -name $cache_dir ! -name "Trackers");
+for folder in $(find $cache_dir -type d -maxdepth 1 ! -name $cache_dir ! -name "Trackers" ! -name "temp");
 do
     for file in $(
         ls -tr $folder/*.txt |
@@ -59,27 +63,14 @@ fi
 
 # 验证和分类 trackers
 echo "Verifying trackers..."
-cat $cache_file | sort -u | while read tracker; do
-    verified_tracker=$(verify_tracker "$tracker")
-    if [ ! -z "$verified_tracker" ]; then
-        echo $verified_tracker >> all.txt
-        case $verified_tracker in
-            http:*) echo $verified_tracker >> http.txt ;;
-            https:*) echo $verified_tracker >> https.txt ;;
-            udp:*) echo $verified_tracker >> udp.txt ;;
-            ws:*|wss:*) echo $verified_tracker >> ws.txt ;;
-        esac
-    fi
-done
+cat $cache_file | sort -u | parallel --timeout 300 --joblog $temp_dir/parallel.log verify_tracker | tee $temp_dir/verified_trackers.txt
 
-# 最终处理
-for file in all.txt https.txt http.txt udp.txt ws.txt; do
-    if [ -f "$file" ]; then
-        sort -u $file -o $file
-    else
-        touch $file
-    fi
-done
+# 分类 trackers
+cat $temp_dir/verified_trackers.txt | sort -u > all.txt
+grep "^http:" $temp_dir/verified_trackers.txt | sort -u > http.txt
+grep "^https:" $temp_dir/verified_trackers.txt | sort -u > https.txt
+grep "^udp:" $temp_dir/verified_trackers.txt | sort -u > udp.txt
+grep "^ws" $temp_dir/verified_trackers.txt | sort -u > ws.txt
 
 # 清理缓存文件
-rm -f $cache_file
+rm -rf $cache_file $temp_dir
