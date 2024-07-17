@@ -17,16 +17,22 @@ curl -sS "${sources[@]}" | grep -E '^(http|udp|ws)' | sort -u > combined.txt
 verify_tracker() {
     local tracker=$1
     local protocol=$(echo "$tracker" | cut -d: -f1)
+    local host=$(echo "$tracker" | cut -d/ -f3 | cut -d: -f1)
+
+    # 使用 Google 的 DNS 服务器，超时设置为 2 秒
+    if ! host -W 2 "$host" 8.8.8.8 > /dev/null 2>&1; then
+        return 1
+    fi
 
     case $protocol in
         http|https)
-            if curl -sS --connect-timeout 3 -o /dev/null "$tracker"; then
+            if curl -sS --connect-timeout 3 --max-time 5 -o /dev/null "$tracker"; then
                 echo "$tracker"
                 [[ $tracker == https://* ]] && echo "$tracker" >> https.txt
             fi
             ;;
         udp)
-            if nc -zu -w3 $(echo "$tracker" | cut -d/ -f3 | cut -d: -f1) $(echo "$tracker" | cut -d: -f3 | cut -d/ -f1) 2>/dev/null; then
+            if nc -zu -w2 "$host" $(echo "$tracker" | cut -d: -f3 | cut -d/ -f1) 2>/dev/null; then
                 echo "$tracker"
             fi
             ;;
@@ -39,8 +45,8 @@ verify_tracker() {
 
 export -f verify_tracker
 
-# 并行验证 trackers
-cat combined.txt | parallel --timeout 300 --jobs 50 verify_tracker > all.txt
+# 并行验证 trackers，设置总超时为 5 分钟，每个作业最多运行 10 秒
+cat combined.txt | parallel --timeout 300 --joblog parallel.log --jobs 50 --max-time 10 verify_tracker > all.txt
 
 # 清理并排序结果
 sort -u all.txt -o all.txt
@@ -48,3 +54,7 @@ sort -u https.txt -o https.txt
 
 # 删除临时文件
 rm combined.txt
+
+# 显示统计信息
+echo "Total trackers: $(wc -l < all.txt)"
+echo "HTTPS trackers: $(wc -l < https.txt)"
