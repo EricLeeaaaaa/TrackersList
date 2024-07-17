@@ -2,7 +2,7 @@ name: CI
 
 on:
   schedule:
-    - cron: '0 0,12 * * *'  # 每天运行两次：0:00 和 12:00 UTC
+    - cron: '0 0 * * *'  # 每天运行一次
   workflow_dispatch:
   push:
     branches:
@@ -16,56 +16,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl netcat-openbsd parallel
-
-      - name: Clean working directory
-        run: |
-          git clean -fd
-          git reset --hard
-
-      - name: Checkout additional repositories
-        run: |
-          git clone https://github.com/DeSireFire/animeTrackerList.git .cache/animeTrackerList
-          git clone https://github.com/XIU2/TrackersListCollection.git .cache/TrackersListCollection
-          git clone https://github.com/ngosang/trackerslist.git .cache/trackerslist
-          git clone https://github.com/hezhijie0327/Trackerslist.git .cache/Trackerslist
-          git clone https://github.com/Azathothas/Trackers.git .cache/Trackers
-
-      - name: Update .gitignore
-        run: |
-          echo ".cache/" >> .gitignore
-          git add .gitignore
-          git commit -m "Update .gitignore to exclude .cache directory" || echo "No changes to .gitignore"
-
-      - name: Build
+      - name: Run script
         run: bash script.sh
 
-      - name: Config Git
+      - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git add all.txt https.txt
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update trackers: $(date +'%Y-%m-%d')" && git push)
 
-      - name: Commit changes
+      - name: Display statistics
         run: |
-          git add all.txt https.txt http.txt udp.txt ws.txt
-          git commit -m "update: $(date) total: $(wc -l < all.txt), https: $(wc -l < https.txt), http: $(wc -l < http.txt), udp: $(wc -l < udp.txt), ws: $(wc -l < ws.txt)" || echo "No changes to commit"
-
-      - name: Display file contents
-        run: |
-          echo "Total trackers in all.txt: $(wc -l < all.txt)"
-          echo "Total trackers in https.txt: $(wc -l < https.txt)"
-          echo "Total trackers in http.txt: $(wc -l < http.txt)"
-          echo "Total trackers in udp.txt: $(wc -l < udp.txt)"
-          echo "Total trackers in ws.txt: $(wc -l < ws.txt)"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          echo "Total trackers: $(wc -l < all.txt)"
+          echo "HTTPS trackers: $(wc -l < https.txt)"
