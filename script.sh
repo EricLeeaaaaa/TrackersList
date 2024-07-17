@@ -19,8 +19,8 @@ verify_tracker() {
     local protocol=$(echo "$tracker" | cut -d: -f1)
     local host=$(echo "$tracker" | cut -d/ -f3 | cut -d: -f1)
 
-    # 使用 Google 的 DNS 服务器，超时设置为 2 秒
-    if ! host -W 2 "$host" 8.8.8.8 > /dev/null 2>&1; then
+    # 使用 中国 的 DNS 服务器，超时设置为 2 秒
+    if ! host -W 2 "$host" 114.114.114.114 > /dev/null 2>&1; then
         return 1
     fi
 
