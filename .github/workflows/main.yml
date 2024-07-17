@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y curl netcat-openbsd
+          sudo apt-get install -y curl netcat-openbsd parallel
 
       - name: Clean working directory
         run: |
