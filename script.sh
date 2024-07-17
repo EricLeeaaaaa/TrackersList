@@ -8,22 +8,25 @@ verify_tracker() {
     local tracker=$1
     local protocol=$(echo $tracker | cut -d: -f1)
     local domain=$(echo $tracker | cut -d/ -f3 | cut -d: -f1)
-    local port=$(echo $tracker | cut -d: -f3 | cut -d/ -f1)
+    local timeout=5
 
-    # 默认端口
-    if [[ -z "$port" ]]; then
-        case $protocol in
-            http) port=80 ;;
-            https) port=443 ;;
-            udp) port=6969 ;;
-            ws|wss) port=443 ;;
-        esac
-    fi
-
-    # 使用 nmap 验证
-    if nmap -p $port $domain | grep -q "open"; then
-        echo $tracker
-    fi
+    case $protocol in
+        http|https)
+            if curl -s --connect-timeout $timeout -o /dev/null -w "%{http_code}" "$tracker" | grep -q "2[0-9][0-9]\|3[0-9][0-9]"; then
+                echo $tracker
+            fi
+            ;;
+        udp)
+            if nc -zu -w $timeout $domain 6969 > /dev/null 2>&1; then
+                echo $tracker
+            fi
+            ;;
+        ws|wss)
+            if curl -s --connect-timeout $timeout -o /dev/null "$tracker"; then
+                echo $tracker
+            fi
+            ;;
+    esac
 }
 
 # 处理其他仓库
