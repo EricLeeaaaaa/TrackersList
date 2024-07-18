@@ -1,7 +1,14 @@
 #!/bin/bash
 
-# 源列表
-sources=(
+# 配置参数
+TIMEOUT=10                # 单个 tracker 验证的超时时间（秒）
+PARALLEL_JOBS=50          # 并行验证的作业数
+DNS_SERVER="114.114.114.114"  # 用于 DNS 查询的服务器
+ALL_TRACKERS_FILE="all.txt"   # 所有验证通过的 trackers 输出文件
+HTTP_TRACKERS_FILE="http.txt" # 仅 HTTP trackers 输出文件
+
+# Tracker 源列表
+TRACKER_SOURCES=(
     "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt"
     "https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt"
     "https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt"
@@ -10,51 +17,112 @@ sources=(
     "https://newtrackon.com/api/all"
 )
 
-# 下载并合并所有源
-curl -sS "${sources[@]}" | grep -E '^(http|udp|ws)' | sort -u > combined.txt
+# 下载并合并所有 tracker 列表
+download_and_merge_trackers() {
+    echo "正在下载并合并 tracker 列表..."
+    curl -sS "${TRACKER_SOURCES[@]}" | grep -E '^(http|udp|ws)' | sort -u > combined_trackers.txt
+}
 
-# 验证并分类 trackers
+# 标准化 tracker URL
+normalize_tracker_url() {
+    local tracker=$1
+    # 移除协议
+    tracker=${tracker#*://}
+    # 移除默认端口 (:80 for http, :443 for https)
+    tracker=${tracker//:80\//\/}
+    tracker=${tracker//:443\//\/}
+    # 移除结尾的 /announce 或 /announce.php
+    tracker=${tracker%/announce}
+    tracker=${tracker%/announce.php}
+    # 移除结尾的斜杠
+    tracker=${tracker%/}
+    echo "$tracker"
+}
+
+# 验证单个 tracker
 verify_tracker() {
     local tracker=$1
-    local protocol=$(echo "$tracker" | cut -d: -f1)
-    local host=$(echo "$tracker" | cut -d/ -f3 | cut -d: -f1)
+    local protocol=${tracker%%:*}
+    local host=${tracker#*//}
+    host=${host%%/*}
+    host=${host%%:*}
+    local normalized_tracker=$(normalize_tracker_url "$tracker")
 
-    # 使用 中国 的 DNS 服务器，超时设置为 2 秒
-    if ! host -W 2 "$host" 114.114.114.114 > /dev/null 2>&1; then
+    # DNS 检查
+    if ! host -W 3 "$host" $DNS_SERVER > /dev/null 2>&1; then
         return 1
     fi
 
+    local is_valid=false
     case $protocol in
         http|https)
-            if curl -sS --connect-timeout 2 --max-time 3 -o /dev/null "$tracker"; then
-                echo "$tracker"
-                [[ $tracker == https://* ]] && echo "$tracker" >> https.txt
+            # 检查 HTTP(S) tracker
+            if curl -sS -I --connect-timeout 5 --max-time 10 "$tracker" 2>&1 | grep -qE "^HTTP/[0-9.]+ [23]"; then
+                is_valid=true
             fi
             ;;
         udp)
-            if nc -zu -w2 "$host" $(echo "$tracker" | cut -d: -f3 | cut -d/ -f1) 2>/dev/null; then
-                echo "$tracker"
+            # 检查 UDP tracker
+            local port=${tracker##*:}
+            port=${port%%/*}
+            if (echo -en "\x00\x00\x04\x17\x27\x10\x19\x80" | nc -u -w5 "$host" "$port" | grep -q "^..................."); then
+                is_valid=true
             fi
             ;;
         ws|wss)
-            # 对于 WebSocket，我们暂时不验证，直接添加
-            echo "$tracker"
+            # 检查 WebSocket tracker
+            if curl -sS -I --connect-timeout 5 --max-time 10 -H "Upgrade: websocket" -H "Connection: Upgrade" "$tracker" 2>&1 | grep -qE "^HTTP/[0-9.]+ 101"; then
+                is_valid=true
+            fi
             ;;
     esac
+
+    if [ "$is_valid" = true ]; then
+        echo "$protocol://$normalized_tracker"
+        [[ $protocol == "http" ]] && echo "$protocol://$normalized_tracker" >> "$HTTP_TRACKERS_FILE"
+    fi
 }
 
-export -f verify_tracker
+# 验证所有 trackers
+verify_all_trackers() {
+    echo "正在验证 trackers..."
+    export -f verify_tracker normalize_tracker_url
+    export HTTP_TRACKERS_FILE
+    parallel --timeout $((TIMEOUT * 60)) --joblog parallel.log --jobs $PARALLEL_JOBS \
+        "timeout ${TIMEOUT}s bash -c 'verify_tracker {}'" < combined_trackers.txt > "$ALL_TRACKERS_FILE"
+}
 
-# 并行验证 trackers，设置总超时为 5 分钟，使用 timeout 命令限制每个作业的运行时间
-cat combined.txt | parallel --timeout 300 --joblog parallel.log --jobs 50 'timeout 5s bash -c "verify_tracker {}"' > all.txt
+# 移除重复的 trackers
+remove_duplicate_trackers() {
+    echo "正在移除重复的 trackers..."
+    # 使用 awk 去重，保留协议信息
+    awk -F'://' '!seen[$2]++' "$ALL_TRACKERS_FILE" | sort -u > temp_all_trackers.txt
+    mv temp_all_trackers.txt "$ALL_TRACKERS_FILE"
 
-# 清理并排序结果
-sort -u all.txt -o all.txt
-sort -u https.txt -o https.txt
+    awk -F'://' '!seen[$2]++' "$HTTP_TRACKERS_FILE" | sort -u > temp_http_trackers.txt
+    mv temp_http_trackers.txt "$HTTP_TRACKERS_FILE"
+}
 
-# 删除临时文件
-rm combined.txt
+# 清理临时文件
+cleanup_temp_files() {
+    echo "正在清理临时文件..."
+    rm combined_trackers.txt
+}
 
-# 显示统计信息
-echo "Total trackers: $(wc -l < all.txt)"
-echo "HTTPS trackers: $(wc -l < https.txt)"
+# 显示 tracker 统计信息
+show_tracker_stats() {
+    echo "验证通过的 trackers 总数: $(wc -l < "$ALL_TRACKERS_FILE")"
+    echo "验证通过的 HTTP trackers 数: $(wc -l < "$HTTP_TRACKERS_FILE")"
+}
+
+# 主函数
+main() {
+    download_and_merge_trackers
+    verify_all_trackers
+    remove_duplicate_trackers
+    cleanup_temp_files
+    show_tracker_stats
+}
+
+# 执行主函数
+main
