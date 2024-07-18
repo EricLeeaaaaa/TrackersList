@@ -1,8 +1,5 @@
 http://185.148.3.231
-http://211.22.29.93
-http://51.38.230.101
 http://54.39.98.124
-http://93.88.129.16
 http://alltorrents.net/bt
 http://bluebird-hd.org
 http://bt.beatrice-raws.org
@@ -50,15 +47,14 @@ http://www.worldboxingvideoarchive.com
 http://www.xwt-classics.net
 http://xtremewrestlingtorrents.net
 https://bittorrent.gongt.net
-https://dev.tracker.cf-identity-wallet.metadata.dev.cf-deployments.org
-https://torrent.tracker.durukanbal.com
 https://tr.burnabyhighstar.com
 https://tracker.cangku.moe
 https://tracker.dmhy.pw
+https://tracker.kitaujisub.site/announce.php?authkey=213|10003|j46n2q
+https://tracker.kitaujisub.site/announce.php?authkey=215|10003|j46n2q
 https://tracker.loligirl.cn
 https://tracker.madtia.cc
 https://tracker.monikadesign.uk/announce/63ea34cb9815cd28d63fc75b2f2c5a56
 https://tracker.monikadesign.uk/announce/a46be21ab845cc0d534d06fea801f95a
 https://tracker.yemekyedim.com
 https://tracker1.520.jp
-udp://tracker.torrust-demo.com:6969
