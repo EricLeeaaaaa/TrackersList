@@ -10,6 +10,9 @@ sources=(
     "https://newtrackon.com/api/all"
 )
 
+# 合并所有源
+curl -sS "${sources[@]}" | grep -E '^(http|udp|ws)' | sort -u > temp.txt
+
 # 去重
 awk '
 BEGIN { FS = "[:/?]" }
