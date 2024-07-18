@@ -20,14 +20,6 @@ TRACKER_SOURCES=(
 TMP_DIR=$(mktemp -d)
 trap 'rm -rf "$TMP_DIR"' EXIT
 
-download_and_verify_tracker() {
-    local url=$1
-
-    curl -sS "$url" | grep -E '^(http|udp|ws)' | sort -u | while read -r tracker; do
-        verify_tracker "$tracker"
-    done
-}
-
 normalize_tracker_url() {
     local tracker=$1
     tracker=${tracker#*://}
@@ -77,6 +69,18 @@ verify_tracker() {
         [[ $protocol == "http" ]] && echo "$protocol://$normalized_tracker" >> "$TMP_DIR/http_temp.txt"
     fi
 }
+
+download_and_verify_tracker() {
+    local url=$1
+
+    curl -sS "$url" | grep -E '^(http|udp|ws)' | sort -u | while read -r tracker; do
+        verify_tracker "$tracker"
+    done
+}
+
+export -f normalize_tracker_url
+export -f verify_tracker
+export -f download_and_verify_tracker
 
 verify_all_trackers() {
     echo "正在验证 trackers..."
