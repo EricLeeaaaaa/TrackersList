@@ -10,8 +10,22 @@ sources=(
     "https://newtrackon.com/api/all"
 )
 
-# 下载并合并所有源
-curl -sS "${sources[@]}" | grep -E '^(http|udp|ws)' | sort -u > all.txt
+# 去重
+awk '
+BEGIN { FS = "[:/?]" }
+{
+    proto = $1
+    domain = $4
+    path = $5 ? "/" $5 : ""
+    for (i = 6; i <= NF; i++) path = path "/" $i
+    if (path == "") path = "/"
+    key = proto "://" domain path
+    if (!(key in seen)) {
+        seen[key] = 1
+        print $0
+    }
+}
+' temp.txt | sort > all.txt
 
 # 提取 HTTPS trackers
 grep '^https://' all.txt > https.txt
@@ -19,3 +33,6 @@ grep '^https://' all.txt > https.txt
 # 显示统计信息
 echo "总 tracker 数量: $(wc -l < all.txt)"
 echo "HTTPS tracker 数量: $(wc -l < https.txt)"
+
+# 清理临时文件
+rm temp.txt
