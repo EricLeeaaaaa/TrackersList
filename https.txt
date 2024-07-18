@@ -12,6 +12,8 @@ https://carbon-bonsai-621.appspot.com/announce
 https://carbon-bonsai-621.appspot.com:443/announce
 https://cernet-tracker.appspot.com/announce
 https://cernet-tracker.appspot.com:443/announce
+https://dev.tracker.cf-identity-wallet.metadata.dev.cf-deployments.org/announce
+https://dev.tracker.cf-identity-wallet.metadata.dev.cf-deployments.org:443/announce
 https://docker-tracker-production.up.railway.app/announce
 https://docker-tracker-production.up.railway.app:443/announce
 https://evening-badlands-6215.herokuapp.com/announce
@@ -42,10 +44,13 @@ https://tr.qfruiti.com:443/announce
 https://tr.ready4.icu/announce
 https://tr.ready4.icu:443/announce
 https://track3r.site:443/announce
+https://tracker-zhuqiy.dgj055.icu:443/announce
 https://tracker.bt4g.com/announce
 https://tracker.bt4g.com:443/announce
 https://tracker.cangku.moe/announce
 https://tracker.cangku.moe:443/announce
+https://tracker.cloudit.top/announce
+https://tracker.cloudit.top:443/announce
 https://tracker.dmhy.pw/announce
 https://tracker.dmhy.pw:443/announce
 https://tracker.gbitt.info/announce
