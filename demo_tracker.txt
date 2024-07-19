@@ -1,0 +1,11 @@
+http://normal.tracker.com/announce
+https://tracker.with.standardport.com:443/announce
+http://tracker.with.nonstandardport.com:8080/announce
+udp://tracker.with.port.com:1234/announce
+wss://secure.websocket.tracker.com:443/announce
+http://tracker.com:80/announce.php
+http://tracker.com/announcehttp://another.tracker.com/announce
+wss://tracker.openwebtorrent.com:443/announcehttp://tracker.gbitt.info/announce
+http://tracker.com:80/announce udp://another.tracker.com:6969/announce
+http://announce
+ http://tracker.with.spaces.com/announce
