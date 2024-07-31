@@ -20,9 +20,15 @@ curl -sS "${sources[@]}" |
     sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' |
     sed -E 's#(https?://|udp://|wss?://)#\n\1#g' |
     sed -E 's#^(https?://[^/]+):(80|443)/#\1/#' |
-    sed -E 's#^([^:]+://[^/]+)(:\d+)?/announce.*#\1\2/announce#' |
-    grep -E '^(http|udp|ws).*://[^/]+/announce$' |
-    sort -u > all.txt
+    sed -E 's#^([^:]+://[^/]+)(:\d+)?/announce(\.php)?.*#\1\2/announce#' |
+    grep -E '^(http|udp|ws).*://[^/]+/announce(\.php)?$' |
+    awk '{ 
+        base = $0;
+        sub(/\.php$/, "", base);
+        if (!seen[base]++) print base;
+        else if (!seen[$0]++) print;
+    }' |
+    sort > all.txt
 
 # 提取 HTTPS trackers
 grep '^https://' all.txt > https.txt
