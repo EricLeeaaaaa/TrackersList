@@ -8,6 +8,7 @@ https://aaa.army:8866/announce
 https://abir0dev.github.io/announce
 https://alpha.torrenttracker.nl/announce
 https://bittorrent.gongt.net/announce
+https://bittorrent.service.gongt.me:59443/announce
 https://bot.ponomar-sibir.ru/announce
 https://bruisedfumblingmotion.sddsdsdsddsdss.repl.co/announce
 https://bt.080609.xyz/announce
