@@ -32,7 +32,6 @@ https://ipv6.tracker.m-team.cc/announce
 https://k.avc.cx/announce
 https://k3tracker.cc/announce
 https://lima-peru.subventas.com/announce
-https://mail.martin-gebhardt.com:8443/announce
 https://nyaa.tracker.wf:7777/announce
 https://o-unkusrx.cloud.okteto.net/announce
 https://open.kickasstracker.com/announce
