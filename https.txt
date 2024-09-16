@@ -29,9 +29,11 @@ https://gwp2-v19.rinet.ru/announce
 https://hcbt.pp.ua/announce
 https://inferno.demonoid.is/announce
 https://ipv6.tracker.m-team.cc/announce
+https://jvavav.com/announce
 https://k.avc.cx/announce
 https://k3tracker.cc/announce
 https://lima-peru.subventas.com/announce
+https://mathkangaroo.jp/announce
 https://nyaa.tracker.wf:7777/announce
 https://o-unkusrx.cloud.okteto.net/announce
 https://open.kickasstracker.com/announce
@@ -89,6 +91,7 @@ https://tracker.4.babico.name.tr/announce
 https://tracker.amelia.fun/announce
 https://tracker.baka.ink/announce
 https://tracker.bangumi.zip/announce
+https://tracker.bjut.jp/announce
 https://tracker.bt-hash.com/announce
 https://tracker.bt4g.com/announce
 https://tracker.bulao.ren/announce
