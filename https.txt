@@ -41,9 +41,11 @@ https://open.kickasstracker.com/announce
 https://opentracker.cc/announce
 https://opentracker.i2p.rocks/announce
 https://opentracker.xyz/announce
+https://p4p.arenabg.com:1337/announce
 https://prestige.minimafia.nl/announce
 https://private.minimafia.nl/announce
 https://pybittrack.retiolus.net/announce
+https://retracker.x2k.ru/announce
 https://retracker2.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online/announce
@@ -162,6 +164,7 @@ https://tracker1.ctix.cn/announce
 https://tracker1.loli.co.nz/announce
 https://tracker1.wimix.org/announce
 https://tracker2.ctix.cn/announce
+https://tracker3.ctix.cn/announce
 https://trackers.mlsub.net/announce
 https://trackers.nekosunevr.co.uk/announce
 https://trackers.run/announce
@@ -170,6 +173,7 @@ https://trakx.herokuapp.com/announce
 https://ttk.pp.ua/announce
 https://voxhost.fr/announce
 https://w.wwwww.wtf/announce
+https://www.peckservers.com:9000/announce
 https://www.peckservers.com:9443/announce
 https://www.wareztorrent.com/announce
 https://x7x.up.railway.app/announce

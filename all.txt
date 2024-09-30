@@ -619,9 +619,11 @@ https://open.kickasstracker.com/announce
 https://opentracker.cc/announce
 https://opentracker.i2p.rocks/announce
 https://opentracker.xyz/announce
+https://p4p.arenabg.com:1337/announce
 https://prestige.minimafia.nl/announce
 https://private.minimafia.nl/announce
 https://pybittrack.retiolus.net/announce
+https://retracker.x2k.ru/announce
 https://retracker2.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online/announce
@@ -740,6 +742,7 @@ https://tracker1.ctix.cn/announce
 https://tracker1.loli.co.nz/announce
 https://tracker1.wimix.org/announce
 https://tracker2.ctix.cn/announce
+https://tracker3.ctix.cn/announce
 https://trackers.mlsub.net/announce
 https://trackers.nekosunevr.co.uk/announce
 https://trackers.run/announce
@@ -748,6 +751,7 @@ https://trakx.herokuapp.com/announce
 https://ttk.pp.ua/announce
 https://voxhost.fr/announce
 https://w.wwwww.wtf/announce
+https://www.peckservers.com:9000/announce
 https://www.peckservers.com:9443/announce
 https://www.wareztorrent.com/announce
 https://x7x.up.railway.app/announce
@@ -858,12 +862,12 @@ udp://bt.plc.mx:3074/announce
 udp://bt.rer.lol:2710/announce
 udp://bt.rer.lol:6969/announce
 udp://bt1.archive.org:6969/announce
-udp://bt1.xxxxbt.cc:6969/announce
 udp://bt2.archive.org:6969/announce
 udp://btt.service.gongt.me:43079/announce
 udp://bttracker.debian.org:6969/announce
 udp://bubu.mapfactor.com:6969/announce
 udp://buddyfly.top:6969/announce
+udp://buny.uk:6969/announce
 udp://c-71-227-163-17.hsd1.wa.comcast.net:6969/announce
 udp://camera.lei001.com:6969/announce
 udp://canardscitrons.nohost.me:6969/announce
@@ -909,11 +913,8 @@ udp://ftp.pet:2710/announce
 udp://globalwave.no-ip.org:6969/announce
 udp://hbsy.zhuqiy.eu.org:6666/announce
 udp://home.kray.pw:6969/announce
-udp://home.yxgz.club:6969/announce
 udp://htz3.noho.st:6969/announce
 udp://hz.is:3000/announce
-udp://hzzwly.gq:6969/announce
-udp://i-p-v-6.tk:6969/announce
 udp://inferno.demonoid.is:3391/announce
 udp://ip119.ip-146-59-102.eu:6969/announce
 udp://ipv4.rer.lol:2710/announce
@@ -927,11 +928,8 @@ udp://ipv6.govt.hu:6969/announce
 udp://ipv6.rer.lol:6969/announce
 udp://ipv6.tracker.harry.lu/announce
 udp://ipv6.tracker.harry.lu:6969/announce
-udp://ipv6.tracker.harry.lu:80/announce
 udp://ipv6.tracker.monitorit4.me:6969/announce
-udp://isk.richardsw.club:6969/announce
 udp://ismaarino.com:1234/announce
-udp://jp.moeweb.pw:6969/announce
 udp://jutone.com:6969/announce
 udp://jvavav.com:6969/announce
 udp://keke.re:6969/announce
@@ -1046,7 +1044,6 @@ udp://tk.cubicview.site:80/announce
 udp://tk1.trackerservers.com:8080/announce
 udp://tk1v6.trackerservers.com:8080/announce
 udp://tk2.trackerservers.com:8080/announce
-udp://tk2v6.trackerservers.com:8080/announce
 udp://torrent.fedoraproject.org:6969/announce
 udp://torrent.hificode.in:6969/announce
 udp://torrent.ubuntu.com:6969/announce
@@ -1066,6 +1063,7 @@ udp://tracker-udp.gbitt.info:80/announce
 udp://tracker-us.silksa.co.za:6969/announce
 udp://tracker.0x.tf:6969/announce
 udp://tracker.0x7c0.com:6969/announce
+udp://tracker.1048576.cn:17272/announce
 udp://tracker.4.babico.name.tr:3131/announce
 udp://tracker.6.babico.name.tr:6969/announce
 udp://tracker.altrosky.nl:6969/announce
@@ -1093,6 +1091,7 @@ udp://tracker.dler.com:6969/announce
 udp://tracker.dler.org:6969/announce
 udp://tracker.doko.moe:6969/announce
 udp://tracker.draatman.uk:6969/announce
+udp://tracker.dump.cl:6969/announce
 udp://tracker.edkj.club:6969/announce
 udp://tracker.etree.org:6969/announce
 udp://tracker.ex.ua:80/announce
@@ -1114,7 +1113,9 @@ udp://tracker.joybomb.tw:6969/announce
 udp://tracker.kali.org:6969/announce
 udp://tracker.kmzs123.cf:17272/announce
 udp://tracker.kmzs123.cn:17272/announce
+udp://tracker.kmzs123.com:17272/announce
 udp://tracker.kmzs123.tk:17272/announce
+udp://tracker.kmzs123.top:17272/announce
 udp://tracker.leech.ie:1337/announce
 udp://tracker.leena.network:6969/announce
 udp://tracker.lelux.fi:6969/announce
@@ -1158,6 +1159,7 @@ udp://tracker.trackerfix.com:82/announce
 udp://tracker.trafficmgr.net:6969/announce
 udp://tracker.trojangogogo.site:8080/announce
 udp://tracker.tryhackx.org:6969/announce
+udp://tracker.vanitycore.co:6969/announce
 udp://tracker.vds.nz:6969/announce
 udp://tracker.vrpnet.org:6969/announce
 udp://tracker.waaa.moe:6969/announce
