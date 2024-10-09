@@ -46,6 +46,7 @@ https://retracker.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online/announce
 https://socket.onvo.me/announce
+https://sparkle.ghostchu-services.top/announce
 https://t.btcland.xyz/announce
 https://t.peer-exchange.download/announce
 https://t.quic.ws/announce
@@ -126,7 +127,6 @@ https://tracker.loli.co.nz/announce
 https://tracker.loligirl.cn/announce
 https://tracker.m-team.cc/announce
 https://tracker.madtia.cc/announce
-https://tracker.midnightprogrammer.net/announce
 https://tracker.mlsub.net/announce
 https://tracker.moeblog.cn/announce
 https://tracker.monikadesign.uk/announce
@@ -158,7 +158,6 @@ https://tracker1.ctix.cn/announce
 https://tracker1.loli.co.nz/announce
 https://tracker1.wimix.org/announce
 https://tracker2.ctix.cn/announce
-https://tracker3.ctix.cn/announce
 https://trackers.mlsub.net/announce
 https://trackers.nekosunevr.co.uk/announce
 https://trackers.run/announce
