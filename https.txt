@@ -38,6 +38,7 @@ https://open.kickasstracker.com/announce
 https://opentracker.cc/announce
 https://opentracker.i2p.rocks/announce
 https://opentracker.xyz/announce
+https://p2p.azu.red/announce
 https://p4p.arenabg.com:1337/announce
 https://prestige.minimafia.nl/announce
 https://private.minimafia.nl/announce
