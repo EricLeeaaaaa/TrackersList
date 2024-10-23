@@ -117,6 +117,7 @@ https://tracker.iriseden.fr/announce
 https://tracker.itscraftsoftware.my.id/announce
 https://tracker.jdx3.org/announce
 https://tracker.jiesen.life:8443/announce
+https://tracker.jobser.eu/announce
 https://tracker.kawaii.id/announce
 https://tracker.kitaujisub.site/announce
 https://tracker.kuroy.me/announce
