@@ -121,6 +121,7 @@ https://tracker.jobser.eu/announce
 https://tracker.kawaii.id/announce
 https://tracker.kitaujisub.site/announce
 https://tracker.kuroy.me/announce
+https://tracker.leechshield.link/announce
 https://tracker.lelux.fi/announce
 https://tracker.lilithraws.cf/announce
 https://tracker.lilithraws.org/announce
