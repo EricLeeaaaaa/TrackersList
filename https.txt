@@ -38,7 +38,6 @@ https://open.kickasstracker.com/announce
 https://opentracker.cc/announce
 https://opentracker.i2p.rocks/announce
 https://opentracker.xyz/announce
-https://p2p.azu.red/announce
 https://p4p.arenabg.com:1337/announce
 https://prestige.minimafia.nl/announce
 https://private.minimafia.nl/announce
@@ -133,6 +132,7 @@ https://tracker.m-team.cc/announce
 https://tracker.madtia.cc/announce
 https://tracker.mlsub.net/announce
 https://tracker.moeblog.cn/announce
+https://tracker.moeking.me/announce
 https://tracker.monikadesign.uk/announce
 https://tracker.moxing.party:6969/announce
 https://tracker.nanoha.org/announce
