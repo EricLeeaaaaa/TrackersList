@@ -27,6 +27,7 @@ https://grifon.info/announce
 https://gwp2-v19.rinet.ru/announce
 https://hcbt.pp.ua/announce
 https://inferno.demonoid.is/announce
+https://ipv4.rer.lol:2710/announce
 https://ipv6.tracker.m-team.cc/announce
 https://k.avc.cx/announce
 https://k3tracker.cc/announce
