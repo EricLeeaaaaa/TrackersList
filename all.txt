@@ -625,6 +625,7 @@ https://seeders-paradise.org/announce
 https://shahidrazi.online/announce
 https://socket.onvo.me/announce
 https://sparkle.ghostchu-services.top/announce
+https://t.213891.xyz/announce
 https://t.btcland.xyz/announce
 https://t.peer-exchange.download/announce
 https://t.quic.ws/announce
@@ -725,7 +726,6 @@ https://tracker.pterclub.com/announce
 https://tracker.publictorrent.net/announce
 https://tracker.quix.cf/announce
 https://tracker.renfei.net/announce
-https://tracker.renfei.net:8080/announce
 https://tracker.sakurato.art:23334/announce
 https://tracker.shittyurl.org/announce
 https://tracker.skynetcloud.site:8443/announce
@@ -937,7 +937,6 @@ udp://kokodayo.site:6969/announce
 udp://laszlo130.go.ro:6969/announce
 udp://laze.cc:6969/announce
 udp://leefafa.tk:6969/announce
-udp://leet-tracker.moe:1337/announce
 udp://li1406-230.members.linode.com:6969/announce
 udp://li2021-95.members.linode.com:6969/announce
 udp://linfan.moe:6969/announce
@@ -1094,8 +1093,8 @@ udp://tracker.deadorbit.nl:6969/announce
 udp://tracker.dev-null.rocks:6969/announce
 udp://tracker.dler.com:6969/announce
 udp://tracker.dler.org:6969/announce
+udp://tracker.doko.moe:6969/announce
 udp://tracker.draatman.uk:6969/announce
-udp://tracker.dump.cl:6969/announce
 udp://tracker.edkj.club:6969/announce
 udp://tracker.etree.org:6969/announce
 udp://tracker.ex.ua:80/announce
