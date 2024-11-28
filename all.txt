@@ -883,7 +883,6 @@ udp://debuz.com:6969/announce
 udp://devops.gay:6969/announce
 udp://dex.email:6969/announce
 udp://dht.bt251.com:6969/announce
-udp://discord.heihachi.pw:6969/announce
 udp://dmitrynegoda.com:6969/announce
 udp://download.nerocloud.me:6969/announce
 udp://dyndns.xionxiii.ovh:6969/announce
@@ -906,10 +905,8 @@ udp://ftp.pet:2710/announce
 udp://globalwave.no-ip.org:6969/announce
 udp://hbsy.zhuqiy.eu.org:6666/announce
 udp://home.kray.pw:6969/announce
-udp://home.yxgz.club:6969/announce
 udp://htz3.noho.st:6969/announce
 udp://hz.is:3000/announce
-udp://hzzwly.gq:6969/announce
 udp://inferno.demonoid.is:3391/announce
 udp://ip119.ip-146-59-102.eu:6969/announce
 udp://ipv4.rer.lol:2710/announce
@@ -1119,8 +1116,6 @@ udp://tracker.monitorit4.me:6969/announce
 udp://tracker.moxing.party:6969/announce
 udp://tracker.mywaifu.best:6969/announce
 udp://tracker.nartlof.com.br:6969/announce
-udp://tracker.netmap.top:6969/announce
-udp://tracker.novaopcj.eu.org:6969/announce
 udp://tracker.ocnix.net:6969/announce
 udp://tracker.ololosh.space:6969/announce
 udp://tracker.open-data.network:8888/announce
