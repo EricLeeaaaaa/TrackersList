@@ -101,7 +101,6 @@ https://tracker.cangku.moe/announce
 https://tracker.cloudit.top/announce
 https://tracker.crawfish.cf/announce
 https://tracker.cyber-hub.net/announce
-https://tracker.dev-null.rocks/announce
 https://tracker.dmhy.pw/announce
 https://tracker.dnlab.net/announce
 https://tracker.expli.top/announce
