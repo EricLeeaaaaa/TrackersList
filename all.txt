@@ -856,11 +856,13 @@ udp://bt.plc.mx:3074/announce
 udp://bt.rer.lol:2710/announce
 udp://bt.rer.lol:6969/announce
 udp://bt1.archive.org:6969/announce
+udp://bt1.xxxxbt.cc:6969/announce
 udp://bt2.archive.org:6969/announce
 udp://btt.service.gongt.me:43079/announce
 udp://bttracker.debian.org:6969/announce
 udp://bubu.mapfactor.com:6969/announce
 udp://buddyfly.top:6969/announce
+udp://buny.uk:6969/announce
 udp://c-71-227-163-17.hsd1.wa.comcast.net:6969/announce
 udp://camera.lei001.com:6969/announce
 udp://canardscitrons.nohost.me:6969/announce
@@ -877,6 +879,7 @@ udp://cutscloud.duckdns.org:6969/announce
 udp://d13bttrck.duckdns.org:6969/announce
 udp://d40969.acod.regrucolo.ru:6969/announce
 udp://dataforai.com:31332/announce
+udp://db.koikia.eu:6969/announce
 udp://debuz.com:6969/announce
 udp://devops.gay:6969/announce
 udp://dht.bt251.com:6969/announce
@@ -1043,6 +1046,7 @@ udp://torrenttracker.nwc.acsalaska.net:6969/announce
 udp://touhou.kawaiiarts.com:6969/announce
 udp://tr.bangumi.moe:6969/announce
 udp://tr.cili001.com:8070/announce
+udp://tr.movian.eu:6969/announce
 udp://tr2.ysagin.top:2715/announce
 udp://tr3.ysagin.top:2715/announce
 udp://tr4ck3r.duckdns.org:6969/announce
@@ -1077,6 +1081,7 @@ udp://tracker.ddunlimited.net:6969/announce
 udp://tracker.deadorbit.nl:6969/announce
 udp://tracker.dler.com:6969/announce
 udp://tracker.dler.org:6969/announce
+udp://tracker.doko.moe:6969/announce
 udp://tracker.draatman.uk:6969/announce
 udp://tracker.dump.cl:6969/announce
 udp://tracker.edkj.club:6969/announce
