@@ -700,6 +700,7 @@ https://tracker.jiesen.life:8443/announce
 https://tracker.jobser.eu/announce
 https://tracker.kawaii.id/announce
 https://tracker.kitaujisub.site/announce
+https://tracker.kmzs123.com/announce
 https://tracker.kuroy.me/announce
 https://tracker.leechshield.link/announce
 https://tracker.lelux.fi/announce
@@ -1026,7 +1027,6 @@ udp://stargrave.org:6969/announce
 udp://static.54.161.216.95.clients.your-server.de:6969/announce
 udp://su-data.com:6969/announce
 udp://sx.xxtor.com:6969/announce
-udp://t.jaekr.sh:6969/announce
 udp://t.overflow.biz:6969/announce
 udp://t.zerg.pw:6969/announce
 udp://taciturn-shadow.spb.ru:6969/announce
@@ -1207,7 +1207,6 @@ udp://yann5.hexanyn.fr:6969/announce
 udp://z.mercax.com:53/announce
 udp://z.paranoid.agency:6969/announce
 udp://zecircle.xyz:6969/announce
-ws://tracker.files.fm:7072/announce
 wss://qot.abiir.top:443/announce
 wss://spacetradersapi-chatbox.herokuapp.com:443/announce
 wss://tracker.btorrent.xyz:443/announce
