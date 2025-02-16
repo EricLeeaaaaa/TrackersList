@@ -130,6 +130,7 @@ https://tracker.leechshield.link/announce
 https://tracker.lelux.fi/announce
 https://tracker.lilithraws.cf/announce
 https://tracker.lilithraws.org/announce
+https://tracker.linvk.com/announce
 https://tracker.logirl.moe/announce
 https://tracker.loli.co.nz/announce
 https://tracker.loligirl.cn/announce
